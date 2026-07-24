@@ -1,0 +1,3 @@
+Patients and Appointments: Each patient can book multiple appointments, but each appointment belongs to only one patient.
+Doctors and Departments: Each doctor is assigned to a single department, and each department can have multiple doctors.
+Medical Records: Every patient has exactly one medical record, and each record is associated with a single patient.
