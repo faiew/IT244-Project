@@ -222,3 +222,13 @@ INSERT INTO Payment (PaymentID, AppointmentID, Amount, PaymentDate, PaymentMetho
 (4003, 1001, 50.00, '2026-07-21', 'Cash', 'Paid'),
 (4004, 1003, 470.00, '2026-07-22', 'Insurance', 'Paid'),
 (4005, 1004, 370.00, '2026-07-23', 'Card', 'Paid');
+
+-- ==========================================
+-- Task 3 - SQL Operations
+-- ==========================================
+
+-- JOIN 1: Patients with their appointment date and attending doctor
+SELECT p.FirstName, p.LastName, a.AppointmentDate, s.FirstName AS DoctorFirstName, s.LastName AS DoctorLastName
+FROM Patient p
+JOIN Appointment a ON p.PatientID = a.PatientID
+JOIN Staff s ON a.StaffID = s.StaffID;
