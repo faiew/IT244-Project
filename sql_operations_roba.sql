@@ -232,3 +232,10 @@ SELECT p.FirstName, p.LastName, a.AppointmentDate, s.FirstName AS DoctorFirstNam
 FROM Patient p
 JOIN Appointment a ON p.PatientID = a.PatientID
 JOIN Staff s ON a.StaffID = s.StaffID;
+
+-- Nested Query 1: Patients whose treatment cost was above the average treatment cost
+SELECT p.FirstName, p.LastName, t.TreatmentName, t.Cost
+FROM Patient p
+JOIN Appointment a ON p.PatientID = a.PatientID
+JOIN Treatment t ON a.AppointmentID = t.AppointmentID
+WHERE t.Cost > (SELECT AVG(Cost) FROM Treatment);
