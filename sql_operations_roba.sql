@@ -248,3 +248,27 @@ SELECT a.AppointmentID, p.FirstName AS PatientFirstName, p.LastName AS PatientLa
 FROM Appointment a
 JOIN Patient p ON a.PatientID = p.PatientID
 JOIN Staff s ON a.StaffID = s.StaffID;
+
+-- TRIGGER: Automatically reduce medicine stock when a prescription is added
+DELIMITER //
+
+CREATE TRIGGER ReduceStockAfterPrescription
+AFTER INSERT ON Prescription
+FOR EACH ROW
+BEGIN
+    UPDATE Medicine
+    SET StockQuantity = StockQuantity - NEW.Quantity
+    WHERE MedicineID = NEW.MedicineID;
+END //
+
+DELIMITER ;
+
+-- Check stock before
+SELECT MedicineID, MedicineName, StockQuantity FROM Medicine WHERE MedicineID = 501;
+
+-- Insert a new prescription for MedicineID 501
+INSERT INTO Prescription (PrescriptionID, TreatmentID, MedicineID, Dosage, Quantity, DurationDays)
+VALUES (3006, 2001, 501, '1 tablet daily', 5, 5);
+
+-- Check stock after — should be 5 less than before
+SELECT MedicineID, MedicineName, StockQuantity FROM Medicine WHERE MedicineID = 501;
