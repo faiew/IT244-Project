@@ -239,3 +239,12 @@ FROM Patient p
 JOIN Appointment a ON p.PatientID = a.PatientID
 JOIN Treatment t ON a.AppointmentID = t.AppointmentID
 WHERE t.Cost > (SELECT AVG(Cost) FROM Treatment);
+
+-- VIEW: Appointment summary showing patient, doctor, date, and reason
+CREATE VIEW AppointmentSummary AS
+SELECT a.AppointmentID, p.FirstName AS PatientFirstName, p.LastName AS PatientLastName,
+       s.FirstName AS DoctorFirstName, s.LastName AS DoctorLastName,
+       a.AppointmentDate, a.Reason
+FROM Appointment a
+JOIN Patient p ON a.PatientID = p.PatientID
+JOIN Staff s ON a.StaffID = s.StaffID;
