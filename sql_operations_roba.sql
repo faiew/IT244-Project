@@ -272,3 +272,10 @@ VALUES (3006, 2001, 501, '1 tablet daily', 5, 5);
 
 -- Check stock after — should be 5 less than before
 SELECT MedicineID, MedicineName, StockQuantity FROM Medicine WHERE MedicineID = 501;
+
+-- Aggregate 1: Total revenue collected per doctor
+SELECT s.FirstName, s.LastName, SUM(pay.Amount) AS TotalRevenue
+FROM Staff s
+JOIN Appointment a ON s.StaffID = a.StaffID
+JOIN Payment pay ON a.AppointmentID = pay.AppointmentID
+GROUP BY s.StaffID, s.FirstName, s.LastName;
