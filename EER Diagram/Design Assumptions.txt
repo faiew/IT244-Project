@@ -1,1 +1,20 @@
-*
+The following assumptions were made during the design of the Smart Clinic Database System
+where the project requirements did not specify detailed business rules.
+1. Each appointment is linked to exactly one patient and one staff member. Group appointments
+and appointments handled by multiple staff members are outside the scope of this project.
+2. One appointment may result in more than one treatment record if multiple procedures are
+performed during the same visit.
+3. Payments are linked to appointments rather than treatments, and an appointment may have
+more than one payment to support partial or installment payments.
+4. The PRESCRIPTION entity is used to resolve the many-to-many relationship between
+TREATMENT and MEDICINE by introducing an associative entity.
+5. Every doctor, nurse, and receptionist must first exist in the STAFF table before being assigned
+to their corresponding subtype.
+6. Each staff member belongs to one department, while a department can have multiple staff
+members.
+7. System-generated IDs are used as primary keys instead of attributes such as phone numbers or
+national IDs because these values may change over time.
+8. Medicine stock is assumed to be updated through SQL operations or database triggers during
+the implementation stage.
+9. Appointment scheduling conflicts, such as double-booking a staff member, are assumed to be
+handled by the application and are not enforced in the database design.
