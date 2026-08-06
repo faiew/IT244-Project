@@ -1,1 +1,52 @@
-*
+The Smart Clinic Database System contains the following relationships:
+1. Books
+Entities:
+Patient - Appointment
+Cardinality:
+1 : MDescription:
+A patient can book many appointments, but each appointment belongs to exactly one patient.
+2. Conducts
+Entities:
+Staff - Appointment
+Cardinality:
+1 : M
+Description:
+A staff member can handle many appointments, while each appointment is assigned to one staff
+member.
+3. Works In
+Entities:
+Department - Staff
+Cardinality:
+1 : M
+Description:
+One department can have many staff members, and each staff member belongs to one
+department.4. Leads To
+Entities:
+Appointment - Treatment
+Cardinality:
+1 : M
+Description:
+One appointment may result in multiple treatments, while each treatment belongs to one
+appointment.
+5. Generates
+Entities:
+Appointment - Payment
+Cardinality:
+1 : M
+Description:
+One appointment can generate multiple payments, and each payment is related to one
+appointment.6. Includes
+Entities:
+Treatment - Prescription
+Cardinality:
+1 : M
+Description:
+One treatment may include multiple prescriptions, while each prescription belongs to one
+treatment.
+7. Specifies
+Entities:
+Prescription - Medicine
+Cardinality:
+M : 1
+Description:
+Each prescription specifies one medicine, while a medicine can appear in many prescriptions.
