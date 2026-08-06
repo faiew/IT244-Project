@@ -1,1 +1,55 @@
-*
+The database uses primary keys to uniquely identify each record in every entity. Foreign keys are
+used to connect related entities and maintain data integrity.1. Patient
+Primary Key:
+- PatientID
+Foreign Key:
+- None
+2. Department
+Primary Key:
+- DepartmentID
+Foreign Key:
+- None
+3. Staff
+Primary Key:
+- StaffID
+Foreign Key:
+- DepartmentID references Department4. Doctor
+Primary Key:
+- StaffID
+Foreign Key:
+- StaffID references Staff
+5. Nurse
+Primary Key:
+- StaffID
+Foreign Key:
+- StaffID references Staff
+6. Receptionist
+Primary Key:
+- StaffID
+Foreign Key:
+- StaffID references Staff7. Appointment
+Primary Key:
+- AppointmentID
+Foreign Keys:
+- PatientID references Patient
+- StaffID references Staff
+8. Treatment
+Primary Key:
+- TreatmentID
+Foreign Key:
+- AppointmentID references Appointment
+9. Medicine
+Primary Key:
+- MedicineID
+Foreign Key:
+- None10. Prescription
+Primary Key:
+- PrescriptionID
+Foreign Keys:
+- TreatmentID references Treatment
+- MedicineID references Medicine
+11. Payment
+Primary Key:
+- PaymentID
+Foreign Key:
+- AppointmentID references Appointment
