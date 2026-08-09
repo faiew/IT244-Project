@@ -1,86 +1,135 @@
 The Smart Clinic Database System consists of the following entities:
+
 1. Patient
+
 Stores demographic and contact information of patients registered in the clinic.
+
 Attributes:
-- PatientID
-- FirstName
-- LastName
-- DateOfBirth
-- Gender
-- Phone
-- Address- Email
+
+1. PatientID
+2. FirstName
+3. LastName
+4. DateOfBirth
+5. Gender
+6. Phone
+7. Address
+8. Email
+
 2. Department
+
 Represents the different clinical and administrative departments in the clinic.
+
 Attributes:
-- DepartmentID
-- DepartmentName
-- Location
-- Extension
+
+1. DepartmentID
+2. DepartmentName
+3. Location
+4. Extension
+
 3. Staff
+
 Stores general information shared by all clinic employees.
+
 Attributes:
-- StaffID
-- FirstName
-- LastName
-- Phone
-- HireDate
-- DepartmentID4. Doctor
+
+1. StaffID
+2. FirstName
+3. LastName
+4. Phone
+5. HireDate
+6. DepartmentID
+
+4. Doctor
+
 Represents doctors working in the clinic and their professional details.
+
 Attributes:
-- StaffID
-- Specialization
-- LicenseNumber
-- ConsultationFee
+
+1. StaffID
+2. Specialization
+3. LicenseNumber
+4. ConsultationFee
+
 5. Nurse
+
 Represents nurses working in the clinic and their professional details.
+
 Attributes:
-- StaffID
-- ShiftType
-- CertificationLevel
+
+1. StaffID
+2. ShiftType
+3. CertificationLevel
+
 6. Receptionist
+
 Represents receptionists working at the clinic.
+
 Attributes:
-- StaffID- DeskNumber
+
+1. StaffID
+2. DeskNumber
+
 7. Appointment
+
 Stores information about scheduled appointments between patients and staff members.
+
 Attributes:
-- AppointmentID
-- PatientID
-- StaffID
-- AppointmentDate
-- AppointmentTime
-- Status
-- Reason
+
+1. AppointmentID
+2. PatientID
+3. StaffID
+4. AppointmentDate
+5. AppointmentTime
+6. Status
+7. Reason
+
 8. Treatment
+
 Stores information about treatments and services provided during appointments.
+
 Attributes:
-- TreatmentID
-- AppointmentID
-- TreatmentName
-- Description
-- Cost- TreatmentDate
+
+1. TreatmentID
+2. AppointmentID
+3. TreatmentName
+4. Description
+5. Cost
+6. TreatmentDate
+
 9. Medicine
+
 Stores information about medicines available in the clinic.
+
 Attributes:
-- MedicineID
-- MedicineName
-- Manufacturer
-- UnitPrice
-- StockQuantity
+
+1. MedicineID
+2. MedicineName
+3. Manufacturer
+4. UnitPrice
+5. StockQuantity
+
 10. Prescription
+
 Stores information about medicines prescribed for treatments.
+
 Attributes:
-- PrescriptionID
-- TreatmentID
-- MedicineID
-- Dosage
-- Quantity
-- DurationDays11. Payment
+
+1. PrescriptionID
+2. TreatmentID
+3. MedicineID
+4. Dosage
+5. Quantity
+6. DurationDays
+
+11. Payment
+
 Stores payment details related to clinic appointments.
+
 Attributes:
-- PaymentID
-- AppointmentID
-- Amount
-- PaymentDate
-- PaymentMethod
-- PaymentStatus
+
+1. PaymentID
+2. AppointmentID
+3. Amount
+4. PaymentDate
+5. PaymentMethod
+6. PaymentStatus
