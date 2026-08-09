@@ -1,24 +1,37 @@
--- View: Display appointment details with patient and staff information
+USE SmartClinicDB;
+
+
+-- VIEW
+
 DROP VIEW IF EXISTS AppointmentDetails;
 
 CREATE VIEW AppointmentDetails AS
 SELECT
-    Appointment.AppointmentID,
-    Patient.FirstName AS PatientFirstName,
-    Patient.LastName AS PatientLastName,
-    Staff.FirstName AS StaffFirstName,
-    Staff.LastName AS StaffLastName,
-    Appointment.AppointmentDate,
-    Appointment.Status
-FROM Appointment
-JOIN Patient
-ON Appointment.PatientID = Patient.PatientID
-JOIN Staff
-ON Appointment.StaffID = Staff.StaffID;
+    a.AppointmentID,
+    p.FirstName AS PatientFirstName,
+    p.LastName AS PatientLastName,
+    s.FirstName AS StaffFirstName,
+    s.LastName AS StaffLastName,
+    a.AppointmentDate,
+    a.Status
+FROM Appointment a
+JOIN Patient p
+    ON a.PatientID = p.PatientID
+JOIN Staff s
+    ON a.StaffID = s.StaffID;
+
+
+-- Test the view
+
+SELECT *
+FROM AppointmentDetails;
+
+
+-- TRIGGER
+
+DROP TRIGGER IF EXISTS UpdateMedicineStock;
 
 DELIMITER $$
-
-DROP TRIGGER IF EXISTS UpdateMedicineStock$$
 
 CREATE TRIGGER UpdateMedicineStock
 AFTER INSERT ON Prescription
@@ -30,3 +43,15 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+
+-- Test the trigger
+
+INSERT INTO Prescription
+(PrescriptionID, TreatmentID, MedicineID, Dosage, Quantity, DurationDays)
+VALUES
+(3006, 2005, 501, '1 tablet daily', 5, 5);
+
+SELECT *
+FROM Medicine
+WHERE MedicineID = 501;
